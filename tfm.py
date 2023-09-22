@@ -36,7 +36,7 @@ def touch(action, type, dir):
                 os.remove(os.getcwd() + "/" + dir)
     except:
         pass
-print("TFM\nv0.0001 (suwako)\nRun 'help' for help.")
+print(version+"\nRun 'help' for help.")
 while True:
     i = input(">>>")
     if i.startswith("ls ") == True:
@@ -96,16 +96,8 @@ while True:
             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
         except PermissionError:
             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
-    elif i.startswith("txn ") == True:
-        d = i.replace("txn ", "")
-        try:
-            rbt = open(d, 'x')
-        except FileExistsError:
-            print(Fore.RED + d + ": File already exists" + Fore.WHITE)
-        except PermissionError:
-             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
-    elif i.startswith("txr ") == True:
-        d = i.replace("txr ", "")
+    elif i.startswith("prn ") == True:
+        d = i.replace("prn ", "")
         try:
             rbt = open(d, 'r')
             print(rbt.read())
@@ -113,21 +105,11 @@ while True:
              print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
         except PermissionError:
              print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
-    elif i.startswith("txa ") == True:
-        d = i.replace("txa ", "")
+    elif i.startswith("app ") == True:
+        d = i.replace("app ", "")
         try:
-            rbw = input("text to add: ")
+            rbw = input("Append> ")
             rbt = open(d, 'a')
-            rbt.write(rbw)
-        except FileNotFoundError:
-             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
-        except PermissionError:
-             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
-    elif i.startswith("txo ") == True:
-        d = i.replace("txo ", "")
-        try:
-            rbw = input("text to replace: ")
-            rbt = open(d, 'w')
             rbt.write(rbw)
         except FileNotFoundError:
              print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
