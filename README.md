@@ -7,3 +7,6 @@ kero kero 🐸
 ## chiruno: v0.002
 added unzipping and that's pretty cool as well  
 ⑨
+## arisu: v0.03 and merge with RBTXTE (really bad txt editor)!!!1
+today i have gotten the companion of dracobear55 to release TFM+RBTXTE, where i've taken his terrible code and mixed it with my terrible code to create the worst code dedicated to alice margatroid  
+[IOSYS_tohootomebayashi_loving.swf](https://kaisernet.org/crypt/flash/otaku/IOSYS_tohootomebayashi_loving.swf)
