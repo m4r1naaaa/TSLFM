@@ -2,7 +2,7 @@ import os
 from colorama import Fore
 from zipfile import ZipFile
 
-version = "TFM v0.002 (chiruno)"
+version = "tfm v0.03 (arisu)"
 def ls(dir):
     try:
         f = os.listdir(dir)
@@ -96,10 +96,29 @@ while True:
             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
         except PermissionError:
             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("prn ") == True:
+        d = i.replace("prn ", "")
+        try:
+            rbt = open(d, 'r')
+            print(rbt.read())
+        except FileNotFoundError:
+             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
+        except PermissionError:
+             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("app ") == True:
+        d = i.replace("app ", "")
+        try:
+            rbw = input("Append> ")
+            rbt = open(d, 'a')
+            rbt.write(rbw)
+        except FileNotFoundError:
+             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
+        except PermissionError:
+             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
     elif i == "clear":
         os.system("clear")
-        print(version+"\nRun 'help' for help.")
+        print(version + "Run 'help' for help.")
     elif i == "help":
-        print(version+"\nhelp: Displays this message.\nclear: Clears the screen.\nbye: Exits.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.\nuz: Unzips a zip file.")
+        print(version + "help: Displays this message.\nclear: Clears the screen.\nbye: Exits.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.\nuz: Unzips a zip file.")
     elif i == "bye":
         exit()
