@@ -1,5 +1,6 @@
 import os
 from colorama import Fore
+from zipfile import ZipFile
 
 def ls(dir):
     try:
@@ -85,8 +86,17 @@ while True:
             print(Fore.RED + d + ": File already exists" + Fore.WHITE)
         except PermissionError:
             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("uz ") == True:
+        d = i.replace("uz ", "")
+        try:
+            with ZipFile(d, 'r') as f:
+                f.extractall()
+        except FileNotFoundError:
+            print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
+        except PermissionError:
+            print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
     elif i == "clear":
         os.system("clear")
-        print("TFM\nv0.0001 (suwako)\nRun 'help' for help.")
+        print("TFM\nv0.002 (chiruno)\nRun 'help' for help.")
     elif i == "help":
-        print("TFM\nv0.0001 (suwako)\n\nhelp: Displays this message.\nclear: Clears the screen.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.")
+        print("TFM\nv0.002 (chiruno)\n\nhelp: Displays this message.\nclear: Clears the screen.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.\nuz: Unzips a zip file.")
