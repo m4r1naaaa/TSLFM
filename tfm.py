@@ -2,6 +2,7 @@ import os
 from colorama import Fore
 from zipfile import ZipFile
 
+version = "TFM v0.002 (chiruno)"
 def ls(dir):
     try:
         f = os.listdir(dir)
@@ -35,7 +36,7 @@ def touch(action, type, dir):
                 os.remove(os.getcwd() + "/" + dir)
     except:
         pass
-print("TFM\nv0.0001 (suwako)\nRun 'help' for help.")
+print(version+"\nRun 'help' for help.")
 while True:
     i = input(">>>")
     if i.startswith("ls ") == True:
@@ -97,8 +98,8 @@ while True:
             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
     elif i == "clear":
         os.system("clear")
-        print("TFM\nv0.002 (chiruno)\nRun 'help' for help.")
+        print(version+"\nRun 'help' for help.")
     elif i == "help":
-        print("TFM\nv0.002 (chiruno)\n\nhelp: Displays this message.\nclear: Clears the screen.\nbye: Exits.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.\nuz: Unzips a zip file.")
+        print(version+"\nhelp: Displays this message.\nclear: Clears the screen.\nbye: Exits.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.\nuz: Unzips a zip file.")
     elif i == "bye":
         exit()
