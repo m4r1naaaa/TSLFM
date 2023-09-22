@@ -2,6 +2,7 @@ import os
 from colorama import Fore
 from zipfile import ZipFile
 
+version = "tfm v0.03 (arisu)"
 def ls(dir):
     try:
         f = os.listdir(dir)
@@ -95,10 +96,47 @@ while True:
             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
         except PermissionError:
             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("txn ") == True:
+        d = i.replace("txn ", "")
+        try:
+            rbt = open(d, 'x')
+        except FileExistsError:
+            print(Fore.RED + d + ": File already exists" + Fore.WHITE)
+        except PermissionError:
+             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("txr ") == True:
+        d = i.replace("txr ", "")
+        try:
+            rbt = open(d, 'r')
+            print(rbt.read())
+        except FileNotFoundError:
+             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
+        except PermissionError:
+             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("txa ") == True:
+        d = i.replace("txa ", "")
+        try:
+            rbw = input("text to add: ")
+            rbt = open(d, 'a')
+            rbt.write(rbw)
+        except FileNotFoundError:
+             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
+        except PermissionError:
+             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("txo ") == True:
+        d = i.replace("txo ", "")
+        try:
+            rbw = input("text to replace: ")
+            rbt = open(d, 'w')
+            rbt.write(rbw)
+        except FileNotFoundError:
+             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
+        except PermissionError:
+             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
     elif i == "clear":
         os.system("clear")
-        print("TFM\nv0.002 (chiruno)\nRun 'help' for help.")
+        print(version + "Run 'help' for help.")
     elif i == "help":
-        print("TFM\nv0.002 (chiruno)\n\nhelp: Displays this message.\nclear: Clears the screen.\nbye: Exits.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.\nuz: Unzips a zip file.")
+        print(version + "help: Displays this message.\nclear: Clears the screen.\nbye: Exits.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.\nuz: Unzips a zip file.")
     elif i == "bye":
         exit()
