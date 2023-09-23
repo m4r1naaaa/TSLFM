@@ -1,8 +1,14 @@
 import os
 from colorama import Fore
 from zipfile import ZipFile
+import shutil
 
-version = "tfm v0.03 (arisu)"
+if os.path.exists(os.path.expanduser('~') + "/recycbin") == False:
+    os.makedirs(os.path.expanduser('~') + '/recycbin', exist_ok=True)
+else:
+    pass
+
+version = "tfm v0.4 (reimu)"
 def ls(dir):
     try:
         f = os.listdir(dir)
@@ -12,9 +18,9 @@ def ls(dir):
         print(Fore.RED + dir + ": Permission denied" + Fore.WHITE)
     try:
         for i in f:
-            if os.path.isdir(dir+"/"+i):
+            if os.path.isdir(dir+"/"+i) == True:
                 print(Fore.GREEN + i + Fore.WHITE)
-            elif os.path.isfile(dir+i):
+            else:
                 print(i)
     except:
         pass
@@ -36,6 +42,8 @@ def touch(action, type, dir):
                 os.remove(os.getcwd() + "/" + dir)
     except:
         pass
+
+
 print(version+"\nRun 'help' for help.")
 while True:
     i = input(">>>")
@@ -44,6 +52,9 @@ while True:
         if d == "cwd":
             print(Fore.BLUE + os.getcwd() + Fore.WHITE + ":")
             ls(os.getcwd())
+        elif d == "bin":
+            print(Fore.BLUE + os.path.expanduser('~') + '/recycbin' + Fore.WHITE + ":")
+            ls(os.path.expanduser('~') + '/recycbin')
         else:
             print(Fore.BLUE + d + Fore.WHITE + ":")
             ls(d)
@@ -63,6 +74,20 @@ while True:
             print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
         except PermissionError:
             print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("mvbin ") == True:
+        d = i.replace("mvbin ", "")
+        try:
+            shutil.move("./" + d, os.path.expanduser('~')+"/recycbin/"+d)
+        except FileNotFoundError:
+            print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
+        except PermissionError:
+            print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("rmbin") == True:
+        try:
+            shutil.rmtree(os.path.expanduser('~') + '/recycbin')
+            os.mkdir(os.path.expanduser('~') + '/recycbin')
+        except PermissionError:
+            print(Fore.RED + d + ": Permission denied! Check permissions for ~/recycbin." + Fore.WHITE)
     elif i.startswith("mkdir ") == True:
         d = i.replace("mkdir ", "")
         try:
@@ -115,10 +140,19 @@ while True:
              print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
         except PermissionError:
              print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
+    elif i.startswith("rn ") == True:
+        d = i.replace("rn ", "")
+        i = input("New name>")
+        try:
+            os.rename(d, i)
+        except FileNotFoundError:
+            print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
+        except PermissionError:
+            print(Fore.RED + d + ": Permission denied" + Fore.WHITE)
     elif i == "clear":
         os.system("clear")
-        print(version + "Run 'help' for help.")
+        print(version + "\nRun 'help' for help.")
     elif i == "help":
-        print(version + "help: Displays this message.\nclear: Clears the screen.\nbye: Exits.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory)\ncd: Changes current working directory.\nuz: Unzips a zip file.\napp: Appends text to a file.\nprn: Prints the contents of a file.")
+        print(version + "help: Displays this message.\nclear: Clears the screen.\nbye: Exits.\nmk(dir): Makes a file/directory.\nrm(dir): Removes a file/directory.\nls: Lists the directory (do 'ls cwd' to list current working directory and 'ls bin' to list the recycling bin).\ncd: Changes current working directory.\nuz: Unzips a zip file.\napp: Appends text to a file.\nprn: Prints the contents of a file.\nrn: Renames a file.\nmvbin: Moves to the recycling bin (/recycbin).\nrmbin: Empties the recycling bin.")
     elif i == "bye":
         exit()
