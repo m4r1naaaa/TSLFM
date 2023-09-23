@@ -99,8 +99,8 @@ while True:
     elif i.startswith("prn ") == True:
         d = i.replace("prn ", "")
         try:
-            rbt = open(d, 'r')
-            print(rbt.read())
+            f = open(d, 'r')
+            print(f.read())
         except FileNotFoundError:
              print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
         except PermissionError:
@@ -108,9 +108,9 @@ while True:
     elif i.startswith("app ") == True:
         d = i.replace("app ", "")
         try:
-            rbw = input("Append> ")
-            rbt = open(d, 'a')
-            rbt.write(rbw)
+            i = input("Append> ")
+            f = open(d, 'a')
+            f.write(i)
         except FileNotFoundError:
              print(Fore.RED + d + ": No such file or directory" + Fore.WHITE)
         except PermissionError:
