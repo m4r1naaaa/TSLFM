@@ -11,5 +11,5 @@ added unzipping and that's pretty cool as well
 today i have gotten the companion of dracobear55 to release TFM+RBTXTE, where i've taken his terrible code and mixed it with my terrible code to create the worst code dedicated to alice margatroid  
 [IOSYS_tohootomebayashi_loving.swf](https://kaisernet.org/crypt/flash/otaku/IOSYS_tohootomebayashi_loving.swf)
 ## reimu: v0.4
-this update includes a recycling bin in your home directory you can interact with using `mvbin`, `rmbin` and `ls bin`! also includes renaming files through rn  
+this update includes a recycling bin in your home directory (~/recycbin) you can interact with using `mvbin`, `rmbin` and `ls bin`! also includes renaming files through rn  
 There are no ~~Easter Eggs~~ jokes up here. Go away.
